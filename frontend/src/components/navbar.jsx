@@ -10,7 +10,6 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import Home from "../pages/home";
-import PrayerTimes from "../../../old-backend/prayers";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +73,7 @@ const Navbar = () => {
       {/* Tab content */}
       <div>
         {activeTab === "Home" && <Home />}
-        {activeTab === "Timetable" && <PrayerTimes />}
+        {activeTab === "Timetable" && <p> timetable stuff </p>}
         {activeTab === "Live" && <p>Live streaming info goes here.</p>}
         {activeTab === "Donate" && <p>Donation options and forms here.</p>}
         {activeTab === "Madrassah" && <p>About the Madrassah program.</p>}
