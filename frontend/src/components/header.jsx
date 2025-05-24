@@ -1,3 +1,6 @@
+// header.jsx
+// displays logo, title, and current date/time in both Gregorian and Hijri formats
+
 import * as React from "react";
 import useDateTime from "../hooks/useDateTime";
 
