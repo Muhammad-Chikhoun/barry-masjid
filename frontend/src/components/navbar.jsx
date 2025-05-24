@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import Home from "../pages/home";
-import PrayerTimes from "../pages/prayers";
+import PrayerTimes from "../../../old-backend/prayers";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
