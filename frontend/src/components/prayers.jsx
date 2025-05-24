@@ -1,42 +1,15 @@
-import { useEffect, useState } from "react";
+// prayers.jsx
+// Timetable page for the Barry Masjid & Islamic Centre website
 
-//ITS THE PAGE ON TIMETABLES, NEEDS TO BE FIXED BETTER TO MATCH OTHER STUFF
+// To Do: Add actual timetable content and functionality
+//        Add link to timetable PDf
+//        Add the calendar ui thing and make it so you can see salaah times for the year easily cuz why not
+
+
+import React from 'react';
 
 export default function PrayerTimes() {
-  const [prayers, setPrayers] = useState(null);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchPrayerTimes = async () => {
-      try {
-        const res = await fetch(`http://localhost:8000/api/v1/barry-masjid-wales-uk/prayer-times`);
-        const contentType = res.headers.get("content-type");
-
-        if (!res.ok) {
-          if (contentType && contentType.includes("application/json")) {
-            const errorData = await res.json();
-            const message =
-              errorData?.detail?.[0]?.msg || "Unexpected error occurred";
-            throw new Error(message);
-          } else {
-            throw new Error("Failed to fetch prayer times");
-          }
-        }
-
-        const data = await res.json();
-        setPrayers(data);
-      } catch (err) {
-        setError(err.message);
-      }
-    };
-
-    fetchPrayerTimes();
-  }, []);
-
-  if (error) return <p className="text-red-500 text-center mt-4">Error: {error}</p>;
-  if (!prayers) return <p className="text-gray-500 text-center mt-4">Loading prayer times...</p>;
-
-  // Map to desired display order and names
   const displayOrder = [
     { key: "fajr", label: "Fajr" },
     { key: "sunset", label: "Sunrise" },
@@ -53,7 +26,6 @@ export default function PrayerTimes() {
         {displayOrder.map(({ key, label }) => (
           <li key={key} className="flex justify-between border-b pb-1">
             <span>{label}</span>
-            <span>{prayers[key]}</span>
           </li>
         ))}
       </ul>
