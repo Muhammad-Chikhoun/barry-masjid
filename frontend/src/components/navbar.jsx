@@ -9,8 +9,8 @@ import * as React from "react";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-import Home from "./home";
-import PrayerTimes from "./prayers";
+import Home from "../pages/home";
+import PrayerTimes from "../pages/prayers";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
