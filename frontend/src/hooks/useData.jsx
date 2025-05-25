@@ -81,6 +81,43 @@ export function suhoorEnd(month, day) {
   return convertTo12Hour(`${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`);
 }
 
+// returns a full list of all the times for the day
+export function fullDay(month, day) {
+  const full = [];
+  for (let i = 0; i < 6; i++) {
+    if (i === 0) {
+      full.push(suhoorEnd(month, day));
+    }
+    if (i === 2) {
+      full.push(zawal(month, day));
+    }
+    full.push(getPrayerTime(month, day, i));
+  }
+  for (let i = 0; i < 5; i++) {
+    full.push(getJamatTime(month, day, i));
+  }
+  return full;
+}
+
+export function fullBegin(month, day){
+  const full = [];
+  for (let i = 0; i < 6; i++) {
+    if(i==1){
+        continue
+    }
+    full.push(getPrayerTime(month, day, i));
+  }
+  return full;
+}
+
+export function fullJamat(month, day){
+  const full = [];
+  for (let i = 0; i < 5; i++) {
+    full.push(getJamatTime(month, day, i));
+  }
+  return full;
+}
+
 // Returns raw calendar data for a given month
 // calendarMonth(0)["4"][0] = Fajr time on 4th January
 export function calendarMonth(month) {
