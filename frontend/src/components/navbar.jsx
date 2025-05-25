@@ -1,9 +1,15 @@
+// navbar.jsx
+// navbar for the Barry Masjid & Islamic Centre website
+// Contains navigation links and tab content
+// Uses lucide-react icons for mobile menu toggle
+
+// TO DO: Add actual content for each tab as needed
+
 import * as React from "react";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
-import Home from "./home";
-import PrayerTimes from "./prayers";
+import Home from "../pages/home";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +28,7 @@ const Navbar = () => {
     <>
       <nav className="bg-primary shadow-xl w-full">
         <div>
+
           {/* Mobile menu toggle */}
           <div className="md:hidden">
             <button className="flex flex-row mx-auto" onClick={() => setIsOpen(!isOpen)}>
@@ -66,7 +73,7 @@ const Navbar = () => {
       {/* Tab content */}
       <div>
         {activeTab === "Home" && <Home />}
-        {activeTab === "Timetable" && <PrayerTimes />}
+        {activeTab === "Timetable" && <p> timetable stuff </p>}
         {activeTab === "Live" && <p>Live streaming info goes here.</p>}
         {activeTab === "Donate" && <p>Donation options and forms here.</p>}
         {activeTab === "Madrassah" && <p>About the Madrassah program.</p>}

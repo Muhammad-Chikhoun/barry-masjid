@@ -1,3 +1,9 @@
+// footer.jsx
+// Footer for the Barry Masjid & Islamic Centre website
+// Contains site information and links
+
+// TO DO: Add actual links and content as needed
+
 import * as React from "react";
 
 const Footer = () => {
