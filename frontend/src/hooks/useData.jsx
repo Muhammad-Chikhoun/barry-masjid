@@ -1,50 +1,94 @@
-// All raw data localised for faster smoother access
-// Access functions using import { functionName } from "../hooks/useData.jsx"
+// All raw data localized for faster, smoother access
+// Access functions using: import { functionName } from "../hooks/useData.jsx"
 
-import data from "../assets/data.json"
+import data from "../assets/data.json";
 
-export function address(){
-    return data.rawdata.association
+// Converts 24-hour time (e.g., "14:30") to 12-hour format with AM/PM
+export function convertTo12Hour(timeStr) {
+  if (!timeStr) return null;
+  const [hourStr, minuteStr] = timeStr.split(":");
+  let hour = parseInt(hourStr, 10);
+  const minutes = minuteStr.padStart(2, "0");
+
+  const period = hour >= 12 ? "PM" : "AM";
+  hour = hour % 12 || 12; // Convert "0" to "12"
+
+  return `${hour}:${minutes} ${period}`;
 }
 
-export function services(){
-    return [
-            ("Women Space", data.rawdata.womenSpace),
-            ("Janaza Prayer",data.rawdata.janazaPrayer),
-            ("Aid Prayer",data.rawdata.aidPrayer),
-            ("Children Courses",data.rawdata.childrenCourses),
-            ("Adult Courses",data.rawdata.adultCourses),
-            ("Ramadan Meal",data.rawdata.ramadanMeal),
-            ("Handicap Accessibility",data.rawdata.handicapAccessibility),
-            ("Ablutions",data.rawdata.ablutions),
-            ("parking",data.rawdata.parking),
-    ]
+// Returns masjid address
+export function address() {
+  return data.rawdata.association;
 }
 
-export function other(){
-    return data.rawdata.otherInfo
+// Returns array of services and their availability
+export function services() {
+  return [
+    ["Women Space", data.rawdata.womenSpace],
+    ["Janaza Prayer", data.rawdata.janazaPrayer],
+    ["Aid Prayer", data.rawdata.aidPrayer],
+    ["Children Courses", data.rawdata.childrenCourses],
+    ["Adult Courses", data.rawdata.adultCourses],
+    ["Ramadan Meal", data.rawdata.ramadanMeal],
+    ["Handicap Accessibility", data.rawdata.handicapAccessibility],
+    ["Ablutions", data.rawdata.ablutions],
+    ["Parking", data.rawdata.parking],
+  ];
 }
 
-//prayer index: 0=fajr 1=shuruq 2=dhur 3=asr 4=maghrib 5=isha
+// Returns other info section
+export function other() {
+  return data.rawdata.otherInfo;
+}
+
+// Gets a specific prayer time and returns it in 12-hour format
+// Prayer index: 0=Fajr, 1=Shuruq, 2=Zuhr, 3=Asr, 4=Maghrib, 5=Isha
 export function getPrayerTime(month, day, prayerIndex) {
-  return data.rawdata.calendar[month]?.[String(day)]?.[prayerIndex] ?? null;
+  const time = data.rawdata.calendar[month][String(day)][prayerIndex];
+  return convertTo12Hour(time);
 }
 
-//prayer index: 0=fajr 1=dhur 2=asr 3=maghrib 4=isha
+// Gets a specific jamaat time and returns it in 12-hour format
+// Prayer index: 0=Fajr, 1=Zuhr, 2=Asr, 3=Maghrib, 4=Isha
 export function getJamatTime(month, day, prayerIndex) {
-  return data.rawdata.iqamaCalendar[month]?.[String(day)]?.[prayerIndex] ?? null;
+  const time = data.rawdata.iqamaCalendar[month][String(day)][prayerIndex];
+  return convertTo12Hour(time);
 }
 
-// How to access the month data {calendarMonth("monthNo 0-11")["date"]["salaah 0-5, 0=fajr, 1=shuruq, and onwards"]}if wanted
-// calendarMonth(0)["4"][0]} gives fajr time on the 4th of january
-// Ideally used to access the full month for month page
-export function calendarMonth(month){
-    return data.rawdata.calendar[month]
+// Zawaal time is 6 minutes before Zuhr (index 2), returned in 12-hour format
+export function zawal(month, day) {
+  const timeStr = data.rawdata.calendar[month][String(day)][2]; // Zuhr time
+  if (!timeStr) return null;
+
+  const [hours, minutes] = timeStr.split(":").map(Number);
+  const date = new Date();
+  date.setHours(hours, minutes, 0, 0);
+  date.setMinutes(date.getMinutes() - 6);
+
+  return convertTo12Hour(`${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`);
 }
 
-// How to access the month data {calendarMonth("monthNo 0-11")["date"]["salaah 0-5, 0=fajr, 1=shuruq, and onwards"]} if wanted
-// calendarMonth(0)["4"][0]} gives fajr jamat time on the 4th of january
-// Ideally used to access the full month for month page
-export function iqamaCalendar(month){
-    return data.rawdata.iqamaCalendar[month]
+// Suhoor end time is 5 minutes before Fajr (index 0), returned in 12-hour format
+export function suhoorEnd(month, day) {
+  const timeStr = data.rawdata.calendar[month][String(day)][0]; // Fajr time
+  if (!timeStr) return null;
+
+  const [hours, minutes] = timeStr.split(":").map(Number);
+  const date = new Date();
+  date.setHours(hours, minutes, 0, 0);
+  date.setMinutes(date.getMinutes() - 5);
+
+  return convertTo12Hour(`${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`);
+}
+
+// Returns raw calendar data for a given month
+// calendarMonth(0)["4"][0] = Fajr time on 4th January
+export function calendarMonth(month) {
+  return data.rawdata.calendar[month];
+}
+
+// Returns raw iqama calendar data for a given month
+// iqamaCalendar(0)["4"][0] = Fajr jamaat time on 4th January
+export function iqamaCalendar(month) {
+  return data.rawdata.iqamaCalendar[month];
 }
