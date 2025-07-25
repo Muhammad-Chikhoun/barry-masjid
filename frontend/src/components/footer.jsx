@@ -5,6 +5,7 @@
 // TO DO: Add actual links and content as needed
 
 import * as React from "react";
+import { address } from "@/hooks/useData";
 
 const Footer = () => {
   return (
@@ -15,6 +16,9 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <h2 className="text-xl font-semibold">Barry Masjid & Islamic Centre</h2>
             <p className="text-sm mt-2">© {new Date().getFullYear()} All rights reserved.</p>
+          </div>
+          <div className="text-center md:text-center" >
+            <p className="text-xs md:text-sm" >{address()}</p>
           </div>
 
           {/* Links */}
