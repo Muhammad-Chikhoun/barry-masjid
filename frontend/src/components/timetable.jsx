@@ -14,30 +14,12 @@ import {
   TableRow,
 } from "./ui/table";
 
+import { fullBegin } from "@/hooks/useData";
+import { fullJamat } from "@/hooks/useData";
 
-const PRAYER_KEYS = [
-  { key: "fajr", label: "Fajr" },
-  { key: "dohr", label: "Zuhr" },
-  { key: "asr", label: "Asr" },
-  { key: "maghreb", label: "Maghrib" },
-  { key: "icha", label: "Isha" },
-];
 
-const jamaatTimes = {
-  fajr: "05:30",
-  dohr: "13:15",
-  asr: "17:00",
-  maghreb: "19:05",
-  icha: "20:45",
-};
-
-const prayers = {
-  fajr: "05:30",
-  dohr: "13:15",
-  asr: "17:00",
-  maghreb: "19:05",
-  icha: "20:45",
-};
+const jamaatTimes = fullJamat(4,25)
+const prayers = fullBegin(4,25)
 
 const Timetable = () => {
 
@@ -49,26 +31,30 @@ const Timetable = () => {
         <TableHeader>
           <TableRow>
             <TableHead></TableHead>
-            {PRAYER_KEYS.map(({ key, label }) => (
-              <TableHead key={key}>{label}</TableHead>
-            ))}
+            <TableHead>Fajr</TableHead>
+            <TableHead>Zuhr</TableHead>
+            <TableHead>Asr</TableHead>
+            <TableHead>Maghrib</TableHead>
+            <TableHead>Isha</TableHead>
           </TableRow>
         </TableHeader>
 
         <TableBody>
+
           <TableRow>
             <TableCell className="font-semibold">Begins</TableCell>
-            {PRAYER_KEYS.map(({ key }) => (
-              <TableCell key={key}>{prayers[key] || "-"}</TableCell>
+            {prayers.map((time, index) => (
+              <TableCell key={index}>{time}</TableCell>
             ))}
           </TableRow>
 
           <TableRow>
-            <TableCell className="font-semibold">Begins</TableCell>
-            {PRAYER_KEYS.map(({ key }) => (
-              <TableCell key={key}>{jamaatTimes[key] || "-"}</TableCell>
+            <TableCell className="font-semibold">Jama'ah</TableCell>
+            {jamaatTimes.map((time, index) => (
+              <TableCell key={index}>{time}</TableCell>
             ))}
           </TableRow>
+
         </TableBody>
       </Table>
     </div>
