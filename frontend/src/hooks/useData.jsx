@@ -145,3 +145,9 @@ export function calendarMonth(month) {
 export function iqamaCalendar(month) {
   return data.rawdata.iqamaCalendar[month];
 }
+
+export function getMonthLength(month) {
+  const days = data.rawdata.calendar[month];
+  const length = Object.keys(days).length;
+  return length;
+}
