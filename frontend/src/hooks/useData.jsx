@@ -68,6 +68,18 @@ export function zawal(month, day) {
   return convertTo12Hour(`${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`);
 }
 
+export function sunset(month, day) {
+  const timeStr = data.rawdata.calendar[month][String(day)][4]; // Maghrib time
+  if (!timeStr) return null;
+
+  const [hours, minutes] = timeStr.split(":").map(Number);
+  const date = new Date();
+  date.setHours(hours, minutes, 0, 0);
+  date.setMinutes(date.getMinutes() - 3);
+
+  return convertTo12Hour(`${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`); 
+}
+
 // Suhoor end time is 5 minutes before Fajr (index 0), returned in 12-hour format
 export function suhoorEnd(month, day) {
   const timeStr = data.rawdata.calendar[month][String(day)][0]; // Fajr time
@@ -90,6 +102,10 @@ export function fullDay(month, day) {
     }
     if (i === 2) {
       full.push(zawal(month, day));
+    }
+    if (i === 4) {
+      full.push(sunset(month, day))
+      continue;
     }
     full.push(getPrayerTime(month, day, i));
   }
