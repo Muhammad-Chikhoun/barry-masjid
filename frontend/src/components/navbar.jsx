@@ -10,6 +10,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 import Home from "../pages/home";
+import MainTable from "./mainTable";
+import Dev from "./dev"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +44,8 @@ const Navbar = () => {
               <button
                 key={name}
                 onClick={() => setActiveTab(name)}
-                className={`hover:text-accent-foreground transition-colors ${
-                  activeTab === name ? "text-black" : "text-white"
+                className={`hover:text-[#e7db68] transition-colors ${
+                  activeTab === name ? "text-[#e7db68]" : "text-white"
                 }`}
               >
                 {name}
@@ -73,11 +75,11 @@ const Navbar = () => {
       {/* Tab content */}
       <div>
         {activeTab === "Home" && <Home />}
-        {activeTab === "Timetable" && <p> timetable stuff </p>}
-        {activeTab === "Live" && <p>Live streaming info goes here.</p>}
-        {activeTab === "Donate" && <p>Donation options and forms here.</p>}
-        {activeTab === "Madrassah" && <p>About the Madrassah program.</p>}
-        {activeTab === "Contact" && <p>Contact us via this section.</p>}
+        {activeTab === "Timetable" && <MainTable />}
+        {activeTab === "Live" && <Dev />}
+        {activeTab === "Donate" && <Dev />}
+        {activeTab === "Madrassah" && <Dev />}
+        {activeTab === "Contact" && <Dev />}
       </div>
     </>
   );
