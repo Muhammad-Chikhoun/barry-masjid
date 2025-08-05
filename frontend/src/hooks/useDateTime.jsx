@@ -24,6 +24,10 @@ const useDateTime = () => {
   });
 
   const monthOnly = dateTime.toLocaleString("en-GB", {month: "long"});
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const monthNum = months.findIndex(month => month === monthOnly);
+  
+  const dateOnly = dateTime.toLocaleString("en-GB", {day: "2-digit"});
 
   // Hijri month names (Umm al-Qura style)
   const hijriMonths = [
@@ -56,7 +60,7 @@ const useDateTime = () => {
     hour12: false,
   });
 
-  return { formattedGregorian, formattedHijri, timeOnly, monthOnly };
+  return { formattedGregorian, formattedHijri, timeOnly, monthNum, dateOnly, months};
 };
 
 export default useDateTime;
