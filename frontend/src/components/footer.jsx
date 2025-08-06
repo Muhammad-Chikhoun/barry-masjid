@@ -20,14 +20,6 @@ const Footer = () => {
           <div className="text-center md:text-center" >
             <p className="text-xs md:text-sm" >{address()}</p>
           </div>
-
-          {/* Links */}
-          <div className="flex flex-col text-center md:flex-row gap-4 text-sm">
-            <a href="#" className="hover:text-white transition">About</a>
-            <a href="#" className="hover:text-white transition">Contact</a>
-            <a href="#" className="hover:text-white transition">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>

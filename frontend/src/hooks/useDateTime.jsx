@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
+import HijriDate from "hijri-date/lib/safe";
 
 const useDateTime = () => {
   const [dateTime, setDateTime] = useState(new Date());
@@ -18,22 +19,48 @@ const useDateTime = () => {
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit",
+    second: "2-digit",
     hour12: false,
   });
 
-  const formattedHijri = new Intl.DateTimeFormat("en-TN-u-ca-islamic", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  }).format(dateTime);
+  const monthOnly = dateTime.toLocaleString("en-GB", {month: "long"});
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const monthNum = months.findIndex(month => month === monthOnly);
+  
+  const dateOnly = dateTime.toLocaleString("en-GB", {day: "2-digit"});
+
+  // Hijri month names (Umm al-Qura style)
+  const hijriMonths = [
+    "Muharram",
+    "Safar",
+    "Rabi' al-Awwal",
+    "Rabi' al-Thani",
+    "Jumada al-Awwal",
+    "Jumada al-Thani",
+    "Rajab",
+    "Sha'ban",
+    "Ramadan",
+    "Shawwal",
+    "Dhu al-Qi'dah",
+    "Dhu al-Hijjah"
+  ];
+  
+  // Get today's Hijri date
+  const todayHijri = new HijriDate();
+  
+  const day = todayHijri.getDate();
+  const monthIndex = todayHijri.getMonth();
+  const year = todayHijri.getFullYear();
+  const monthName = hijriMonths[monthIndex-1];
+  const formattedHijri = `${day} ${monthName} ${year}`
 
   const timeOnly = dateTime.toLocaleTimeString("en-GB", {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
-  });  
+  });
 
-  return { formattedGregorian, formattedHijri, timeOnly };
+  return { formattedGregorian, formattedHijri, timeOnly, monthNum, dateOnly, months};
 };
 
 export default useDateTime;

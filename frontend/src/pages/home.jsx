@@ -2,7 +2,7 @@
 // home page of the website
 
 import * as React from "react";
-import Timetable from "../components/timetable";
+import Timetable from "../components/timetable2";
 import HomeCarousel from "../components/homeCarousel";
 
 const Home = () => {
