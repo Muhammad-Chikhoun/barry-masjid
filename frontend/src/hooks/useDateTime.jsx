@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
-import HijriDate from "hijri-date/lib/safe";
+import HijriDate from "hijri-date";
 
 const useDateTime = () => {
   const [dateTime, setDateTime] = useState(new Date());
