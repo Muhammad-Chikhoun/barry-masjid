@@ -61,46 +61,6 @@ const mainTable = () => {
   <div className="overflow-x-auto text-black justify-center">
         <br />
 
-{/*
-<div className="max-w-5xl mx-auto px-4 py-5">
-  <h1 className="font-bold text-4xl text-primary">
-    Salah Times{" "}
-    <span className="text-lg text-gray-600 font-normal">
-      for today: {niceDate}
-    </span>
-  </h1>
-  <hr className="border-t-3 border-primary" />
-</div>
-*/}
-
-
-        <Table className="w-fit mx-auto text-center">
-          <TableHeader>
-            <TableRow>
-                <TableHead colSpan={1}></TableHead> {/* For the Date column */}
-                <TableHead colSpan={9} className="text-center font-bold text-2xl text-primary">Beginning Times</TableHead>
-                <TableHead colSpan={5} className="text-center font-bold text-2xl text-primary">Jamaat Times</TableHead>
-            </TableRow>
-            <TableRow className="border-1 border-b-black">
-                {headings.map((time, index) => (
-                <TableHead className={index === 0 || index === 9 ? "text-center text-sm border-r-1 border-black" : "text-center text-sm"} key={index}>{time}</TableHead>
-              ))}
-            </TableRow>
-          </TableHeader>
-
-          <TableBody>
-            <TableRow>
-              <TableCell className="border-r-1 border-black" >{currentDate}</TableCell>
-              {times2.map((time, index) => (
-                <TableCell className={index === 8 ? "text-center text-sm border-r-1 border-black" : "text-center text-sm"} key={index}>{time}</TableCell>
-              ))}
-            </TableRow>
-          </TableBody>
-        </Table>
-
-        <br />
-
-
       <div className="max-w-5xl mx-auto px-4 py-5">
         <h1 className="font-bold text-4xl text-primary">Salah Timetable{" "}
           <span className="text-lg text-gray-600 font-normal">for the month of {months[currentMonth]}</span>
