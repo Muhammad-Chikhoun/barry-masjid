@@ -16,11 +16,13 @@ import { Button } from "./ui/button";
 
 import { fullDay } from "@/hooks/useData";
 import useDateTime from "@/hooks/useDateTime";
+import { useNavigate } from "react-router-dom";
 
 const Timetable = () => {
   const { monthNum, dateOnly } = useDateTime();
   const [currentDate] = React.useState(dateOnly);
   const times = fullDay(monthNum, parseInt(currentDate));
+  const navigate = useNavigate();
 
   const headings = [
     "Fajr",
@@ -48,7 +50,7 @@ const Timetable = () => {
         <h1 className="text-xl md:text-3xl font-bold text-center text-primary">
           Today's Salah Times
         </h1>
-        <Button onClick={() => setActiveTab("Timetable")}>
+        <Button onClick={() => navigate("/timetable")}>
           View Full Timetable
         </Button>
       </div>
