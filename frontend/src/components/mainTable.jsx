@@ -61,6 +61,7 @@ const mainTable = () => {
   <div className="overflow-x-auto text-black justify-center">
         <br />
 
+{/*
 <div className="max-w-5xl mx-auto px-4 py-5">
   <h1 className="font-bold text-4xl text-primary">
     Salah Times{" "}
@@ -70,6 +71,7 @@ const mainTable = () => {
   </h1>
   <hr className="border-t-3 border-primary" />
 </div>
+*/}
 
 
         <Table className="w-fit mx-auto text-center">
@@ -95,7 +97,9 @@ const mainTable = () => {
             </TableRow>
           </TableBody>
         </Table>
+
         <br />
+
 
       <div className="max-w-5xl mx-auto px-4 py-5">
         <h1 className="font-bold text-4xl text-primary">Salah Timetable{" "}

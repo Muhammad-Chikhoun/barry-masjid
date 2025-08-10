@@ -14,7 +14,7 @@ import {
 } from "./ui/table";
 import { Button } from "./ui/button";
 
-import { fullDay } from "@/hooks/useData";
+import { fullDay, suhoorEnd } from "@/hooks/useData";
 import useDateTime from "@/hooks/useDateTime";
 import { useNavigate } from "react-router-dom";
 
@@ -39,6 +39,28 @@ const Timetable = () => {
     times[7],
     times[8]
   ]
+
+    const otherTimes = [
+    [times[0], "Suhoor<br/>End"],
+    [times[2], "Sunrise"],
+    [times[3], "Zawaal"],
+    [times[6], "Sunset"],
+    [times[10], "Jumu'ah"]
+  ]
+  
+  const mixedTimes = [    
+    times[1],
+    times[9],
+    times[4],
+    times[10],
+    times[5],
+    times[11],
+    times[7],
+    times[12],
+    times[8],
+    times[13],
+  ]
+
   const jamaatTimes = times.slice(9,14)
  
   return (
@@ -55,6 +77,7 @@ const Timetable = () => {
         </Button>
       </div>
 
+{/* 
         <Table className="w-fit text-center text-[12px] border">
           <TableHeader>
             <TableRow className="border-b border-black">
@@ -68,20 +91,85 @@ const Timetable = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
+
             <TableRow>
               <TableHead className="text-center text-[10px] md:text-sm border-r border-black">Begins</TableHead>
               {beginsTimes.map((time, index) => (
                 <TableCell key={index}>{time}</TableCell>
               ))}
             </TableRow>
+
             <TableRow>
               <TableHead className="text-center text-[10px] md:text-sm border-r border-black">Jam'aat</TableHead>
               {jamaatTimes.map((time, index) => (
                 <TableCell key={index}>{time}</TableCell>
               ))}
             </TableRow>
+            <br />
+
+            <TableRow>
+              {otherTimes.map(([time, title], index) => (
+                <React.Fragment key={index}>
+                  <TableHead>{title}:</TableHead>
+                  <TableCell>{time}</TableCell>
+                </React.Fragment>
+              ))}
+            </TableRow>
+
+
           </TableBody>
         </Table>
+*/}
+<Table className="w-fit text-[12px]">
+  <TableHeader>
+    {/* Header row 1: section titles */}
+    <TableRow>
+      {headings.map((heading, i) => (
+        <TableCell
+          key={i}
+          colSpan={2}
+          className="text-center py-0 font-bold"
+          dangerouslySetInnerHTML={{ __html: heading }}
+        />
+      ))}
+    </TableRow>
+
+    {/* Header row 2: sub labels (Begins / Jamaat) */}
+    <TableRow>
+      {headings.map((_, i) => (
+        <React.Fragment key={i}>
+          <TableCell className="py-0">Begins</TableCell>
+          <TableCell className="py-0">Jamaat</TableCell>
+        </React.Fragment>
+      ))}
+    </TableRow>
+
+    {/* Mixed times row */}
+    <TableRow>
+      {mixedTimes.map((time, i) => (
+        <TableCell key={i} className="px-2 py-1">
+          {time}
+        </TableCell>
+      ))}
+    </TableRow>
+    <br />
+    {/* Last row: add divider above */}
+    <TableRow>
+      {otherTimes.map(([time, title], i) => (
+        <React.Fragment key={i}>
+          <TableHead
+            className="text-center border-t-2 border-primary"
+            dangerouslySetInnerHTML={{ __html: `${title}:` }}
+          />
+          <TableCell className="border-t-2 border-primary">{time}</TableCell>
+        </React.Fragment>
+      ))}
+    </TableRow>
+  </TableHeader>
+</Table>
+
+
+
 
       </div>
     </div>
