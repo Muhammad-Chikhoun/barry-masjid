@@ -1,4 +1,11 @@
+// footer.jsx
+// Footer for the Barry Masjid & Islamic Centre website
+// Contains site information and links
+
+// TO DO: Add actual links and content as needed
+
 import * as React from "react";
+import { address } from "@/hooks/useData";
 
 const Footer = () => {
   return (
@@ -7,16 +14,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
           {/* Site Info */}
           <div className="text-center md:text-left">
-            <h2 className="text-xl font-semibold">Barry Masjid & Islamic Centre</h2>
+            <h2 className="text-xl font-semibold">Barry Masjid</h2>
             <p className="text-sm mt-2">© {new Date().getFullYear()} All rights reserved.</p>
           </div>
-
-          {/* Links */}
-          <div className="flex flex-col text-center md:flex-row gap-4 text-sm">
-            <a href="#" className="hover:text-white transition">About</a>
-            <a href="#" className="hover:text-white transition">Contact</a>
-            <a href="#" className="hover:text-white transition">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition">Terms of Service</a>
+          <div className="text-center md:text-center" >
+            <p className="text-xs md:text-sm" >Barry Masjid, 332 Holton Road<br />Barry, Vale of Glamorgan<br />Wales, United Kingdom<br />CF63 4HY</p>
           </div>
         </div>
       </div>
