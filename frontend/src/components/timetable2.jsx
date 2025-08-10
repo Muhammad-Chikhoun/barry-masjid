@@ -64,8 +64,8 @@ const Timetable = () => {
   const jamaatTimes = times.slice(9,14)
  
   return (
-    <div className="flex items-center justify-center">
-      <div className="flex flex-col md:flex-row items-center py-8 gap-5 text-black overflow-x-auto">
+    <div className="flex items-center justify-center ">
+      <div className="flex flex-col md:flex-row items-center py-8 gap-5 text-black overflow-x-auto ">
 
         
       <div className="flex flex-col">
@@ -78,7 +78,7 @@ const Timetable = () => {
       </div>
 
 
-<Table className="table-auto border-collapseborder-separate border-spacing-0 rounded-lg overflow-hidden">
+<Table className="table-auto border-separate border-spacing-0 rounded-lg overflow-hidden ">
   <TableHeader>
     <TableRow>
       <TableHead></TableHead>
