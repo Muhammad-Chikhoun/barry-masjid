@@ -105,6 +105,7 @@ export function fullDay(month, day) {
     }
     if (i === 4) {
       full.push(sunset(month, day))
+      full.push(getPrayerTime(month, day, i))
       continue;
     }
     full.push(getPrayerTime(month, day, i));
