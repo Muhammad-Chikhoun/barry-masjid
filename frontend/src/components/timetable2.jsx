@@ -65,16 +65,14 @@ const Timetable = () => {
  
   return (
     <div className="flex items-center justify-center ">
-      <div className="flex flex-col md:flex-row items-center py-8 gap-5 text-black overflow-x-auto ">
+      <div className="items-center py-8 gap-5 text-black overflow-x-auto ">
 
         
       <div className="flex flex-col">
         <h1 className="text-xl md:text-3xl font-bold text-center text-primary">
           Today's Salah Times
         </h1>
-        <Button onClick={() => navigate("/timetable")}>
-          View Full Timetable
-        </Button>
+
       </div>
 
 
@@ -86,7 +84,7 @@ const Timetable = () => {
         <TableHead
           key={index}
           colSpan={2}
-          className="text-left text-[10px]"
+          className="text-left text-[13px]"
         >
           {heading}
         </TableHead>
@@ -96,14 +94,14 @@ const Timetable = () => {
 
   <TableBody>
     <TableRow>
-      <TableHead className="text-left text-[10px] text-primary">
+      <TableHead className="text-left text-[13px] text-primary">
         Begins
       </TableHead>
       {beginsTimes.map((time, index) => (
         <TableCell
           key={index}
           colSpan={2}
-          className="text-left text-[10px]"
+          className="text-left text-[13px]"
         >
           {time}
         </TableCell>
@@ -111,14 +109,14 @@ const Timetable = () => {
     </TableRow>
 
     <TableRow>
-      <TableHead className="text-left text-[10px] text-primary">
+      <TableHead className="text-left text-[13px] text-primary ">
         Jam'aat
       </TableHead>
       {jamaatTimes.map((time, index) => (
         <TableCell
           key={index}
           colSpan={2}
-          className="text-left text-[10px]"
+          className="text-left text-[13px]"
         >
           {time}
         </TableCell>
@@ -129,17 +127,21 @@ const Timetable = () => {
     <TableRow className="">
       {otherTimes.map(([time, title], index) => (
         <React.Fragment key={index}>
-          <TableHead className="text-[10px] text-white font-semibold bg-primary ">
+          <TableHead className="text-[13px] text-white font-semibold bg-primary rounded-lg">
             {title}:
           </TableHead>
-          <TableCell className="text-white bg-[#244f39a9] text-[10px]">{time}</TableCell>
+          <TableCell className="text-white bg-[#244f39a9] text-[13px] rounded-lg">{time}</TableCell>
         </React.Fragment>
       ))}
     </TableRow>
   </TableBody>
 </Table>
 
-
+      <div className="flex flex-col pt-2">
+                <Button onClick={() => navigate("/timetable")}>
+          View Full Timetable
+        </Button>
+      </div>
       </div>
     </div>
   );
