@@ -44,8 +44,8 @@ const Navbar = () => {
               <button
                 key={name}
                 onClick={() => setActiveTab(name)}
-                className={`hover:text-[#e7db68] transition-colors ${
-                  activeTab === name ? "text-[#e7db68]" : "text-white"
+                className={`hover:text-primary hover:bg-white hover:px-2.5 transition-all ${
+                  activeTab === name ? "text-primary bg-white px-5 font-bold" : "text-white"
                 }`}
               >
                 {name}
@@ -61,8 +61,8 @@ const Navbar = () => {
               <button
                 key={name}
                 onClick={() => {setActiveTab(name)}}
-                className={`block w-full hover:text-accent-foreground transition-colors ${
-                  activeTab === name ? "text-black" : "text-white"
+                className={`block w-full hover:text-accent-foreground transition-all ${
+                  activeTab === name ? "text-primary bg-white" : "text-white"
                 }`}
               >
                 {name}
