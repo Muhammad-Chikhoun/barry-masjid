@@ -65,18 +65,17 @@ const Timetable = () => {
  
   return (
     <div className="flex items-center justify-center ">
-      <div className="items-center py-8 gap-5 text-black overflow-x-auto ">
+      <div className="items-center py-5 gap-5 text-black overflow-x-auto ">
 
         
-      <div className="flex flex-col">
+      <div className="flex flex-col pb-2">
         <h1 className="text-xl md:text-3xl font-bold text-center text-primary">
           Today's Salah Times
         </h1>
-
       </div>
 
 
-<Table className="table-auto border-separate border-spacing-0 rounded-lg overflow-hidden ">
+<Table className="table-auto border-separate border-spacing-0 rounded-lg overflow-hidden">
   <TableHeader>
     <TableRow>
       <TableHead></TableHead>
@@ -124,24 +123,41 @@ const Timetable = () => {
     </TableRow>
 
     {/* Other times */}
-    <TableRow className="">
-      {otherTimes.map(([time, title], index) => (
-        <React.Fragment key={index}>
-          <TableHead className="text-[13px] text-white font-semibold bg-primary rounded-lg">
-            {title}:
-          </TableHead>
-          <TableCell className="text-white bg-[#244f39a9] text-[13px] rounded-lg">{time}</TableCell>
-        </React.Fragment>
-      ))}
-    </TableRow>
+<TableRow>
+  {otherTimes.map(([time, title], index) => {
+    const isEven = index % 2 === 0;
+    const bgColor = isEven ? "bg-primary" : "bg-[#244f39a9]";
+    const textColor = "text-white";
+
+    return (
+          <React.Fragment key={index}>
+            <TableHead className="p-0">
+              <div className={`m-0 p-2 rounded-l-lg ${bgColor} ${textColor}`}>
+                {title}:
+              </div>
+            </TableHead>
+            <TableCell className="p-0">
+              <div className={`mr-1 p-2 rounded-r-lg ${bgColor} ${textColor}`}>
+                {time}
+              </div>
+            </TableCell>
+          </React.Fragment>
+    );
+  })}
+</TableRow>
+
   </TableBody>
 </Table>
 
-      <div className="flex flex-col pt-2">
-                <Button onClick={() => navigate("/timetable")}>
-          View Full Timetable
-        </Button>
-      </div>
+<div className="flex flex-row justify-center gap-3 pt-2">
+  <Button onClick={() => navigate("/timetable")}>
+    View Full Timetable
+  </Button>
+  <Button onClick={() => navigate("/timetable")}>
+    Download Timetable PDF
+  </Button>
+</div>
+
       </div>
     </div>
   );
