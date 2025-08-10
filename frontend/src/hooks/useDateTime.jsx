@@ -23,6 +23,14 @@ const useDateTime = () => {
     hour12: false,
   });
 
+  const niceDate = dateTime.toLocaleDateString("en-GB", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+  })
+  
+
   const monthOnly = dateTime.toLocaleString("en-GB", {month: "long"});
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const monthNum = months.findIndex(month => month === monthOnly);
@@ -60,7 +68,7 @@ const useDateTime = () => {
     hour12: false,
   });
 
-  return { formattedGregorian, formattedHijri, timeOnly, monthNum, dateOnly, months};
+  return { formattedGregorian, formattedHijri, timeOnly, monthNum, dateOnly, months, niceDate};
 };
 
 export default useDateTime;

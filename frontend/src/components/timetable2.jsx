@@ -23,34 +23,28 @@ const Timetable = () => {
   const times = fullDay(monthNum, parseInt(currentDate));
 
   const headings = [
-    "Suhoor<br />End",
     "Fajr",
-    "Sunrise",
-    "Zawaal",
     "Zuhr",
     "Asr",
     "Maghrib",
     "Isha",
   ];
 
-  const beginsTimes = times.slice(0, 8);
-  const jamaatTimes = [
-    "-",            // Suhoor
-    times[8],       // Fajr Jamaat
-    "-",            // Sunrise
-    "-",            // Zawaal
-    times[9],       // Zuhr Jamaat
-    times[10],      // Asr Jamaat
-    times[11],      // Maghrib Jamaat
-    times[12],      // Isha Jamaat
-  ];
-
+  const beginsTimes = [
+    times[1],
+    times[4],
+    times[5],
+    times[7],
+    times[8]
+  ]
+  const jamaatTimes = times.slice(9,14)
+ 
   return (
-    <div className="overflow-y-auto text-black px-4">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-4 mb-8">
+    <div className="flex items-center justify-center">
+      <div className="flex flex-col md:flex-row items-center gap-5 py-10 md:ml-22 text-black ">
 
         
-      <div className="flex flex-col items-center gap-1">
+      <div className="flex flex-col">
         <h1 className="text-xl md:text-3xl font-bold text-center text-primary">
           Today's Salah Times
         </h1>
@@ -59,35 +53,34 @@ const Timetable = () => {
         </Button>
       </div>
 
-        {/* Table */}
         <Table className="w-fit text-center text-[12px] border">
           <TableHeader>
             <TableRow className="border-b border-black">
-              <TableHead className="text-center text-[10px] md:text-sm"></TableHead>
+              <TableHead className="text-center text-[10px] md:text-sm border-r border-black"></TableHead>
               {headings.map((heading, index) => (
                 <TableHead
                   key={index}
                   className="text-center text-[10px] md:text-sm"
-                  dangerouslySetInnerHTML={{ __html: heading }}
-                />
+                  >{heading}</TableHead>
               ))}
             </TableRow>
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableHead className="text-center text-[10px] md:text-sm">Begins</TableHead>
+              <TableHead className="text-center text-[10px] md:text-sm border-r border-black">Begins</TableHead>
               {beginsTimes.map((time, index) => (
                 <TableCell key={index}>{time}</TableCell>
               ))}
             </TableRow>
             <TableRow>
-              <TableHead className="text-center text-[10px] md:text-sm">Jam'aat</TableHead>
+              <TableHead className="text-center text-[10px] md:text-sm border-r border-black">Jam'aat</TableHead>
               {jamaatTimes.map((time, index) => (
                 <TableCell key={index}>{time}</TableCell>
               ))}
             </TableRow>
           </TableBody>
         </Table>
+
       </div>
     </div>
   );

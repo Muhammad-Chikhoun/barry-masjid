@@ -14,11 +14,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
           {/* Site Info */}
           <div className="text-center md:text-left">
-            <h2 className="text-xl font-semibold">Barry Masjid & Islamic Centre</h2>
+            <h2 className="text-xl font-semibold">Barry Masjid</h2>
             <p className="text-sm mt-2">© {new Date().getFullYear()} All rights reserved.</p>
           </div>
           <div className="text-center md:text-center" >
-            <p className="text-xs md:text-sm" >{address()}</p>
+            <p className="text-xs md:text-sm" >Barry Masjid, 332 Holton Road<br />Barry, Vale of Glamorgan<br />Wales, United Kingdom<br />CF63 4HY</p>
           </div>
         </div>
       </div>
