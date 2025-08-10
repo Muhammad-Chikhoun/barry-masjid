@@ -45,7 +45,7 @@ const mainTable = () => {
         <TableHeader>
             <TableRow>
                 <TableHead colSpan={1}></TableHead> {/* For the Date column */}
-                <TableHead colSpan={8} className="text-center font-bold text-2xl text-primary">Beginning Times</TableHead>
+                <TableHead colSpan={9} className="text-center font-bold text-2xl text-primary">Beginning Times</TableHead>
                 <TableHead colSpan={5} className="text-center font-bold text-2xl text-primary">Jamaat Times</TableHead>
             </TableRow>
             <TableRow className="border-1 border-b-black">
@@ -57,6 +57,7 @@ const mainTable = () => {
                 <TableHead  className="text-center text-[10px] md:text-sm">Zuhr</TableHead>
                 <TableHead  className="text-center text-[10px] md:text-sm">Asr</TableHead>
                 <TableHead  className="text-center text-[10px] md:text-sm">Sunset</TableHead>
+                <TableHead  className="text-center text-[10px] md:text-sm">Maghrib</TableHead>
                 <TableHead  className="text-center text-[10px] md:text-sm border-r-1 border-black">Isha</TableHead>
                 <TableHead  className="text-center text-[10px] md:text-sm">Fajr</TableHead>
                 <TableHead  className="text-center text-[10px] md:text-sm">Zuhr /<br />Jumu'ah</TableHead>
@@ -71,13 +72,13 @@ const mainTable = () => {
                 {times.map((row, rowIndex) => (
                   <TableRow
                     key={rowIndex}
-                    className={rowIndex+1 === parseInt(currentDate) && currentMonth === monthNum ? "bg-yellow-100 " : ""}
+                    className={rowIndex+1 === parseInt(currentDate) && currentMonth === monthNum ? "bg-primary text-white " : ""}
                   >
                     <TableCell className="text-[10px] md:text-xs border-r-1 border-black">{rowIndex + 1}</TableCell>
                       {row.map((cell, cellIndex) => (
                         <TableCell
                           key={cellIndex}
-                          className={`text-[10px] md:text-xs leading-tight ${cellIndex === 7 ? "border-r-1 border-black" : ""}`}
+                          className={`text-[10px] md:text-xs leading-tight ${cellIndex === 8 ? "border-r-1 border-black" : ""}`}
                         >
                           {cell}
                         </TableCell>
