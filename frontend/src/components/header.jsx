@@ -14,8 +14,8 @@ const Header = () => {
           <img src="barry.png" className="w-15 md:w-30" alt="Barry Logo" />
   
           {/* Title */}
-          <h1 className="text-center text-white text-lg font-bold md:text-4xl mx-auto">
-            Barry Masjid & Islamic Centre
+          <h1 className="text-center text-white text-lg font-bold md:text-6xl mx-auto">
+            Barry Masjid
           </h1>
   
           {/* Date & Time */}
