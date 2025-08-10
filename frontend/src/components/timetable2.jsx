@@ -64,8 +64,8 @@ const Timetable = () => {
   const jamaatTimes = times.slice(9,14)
  
   return (
-    <div className="flex items-center justify-center">
-      <div className="flex flex-col md:flex-row items-center gap-5 py-10 md:ml-22 text-black ">
+    <div className="flex items-center justify-center ">
+      <div className="flex flex-col md:flex-row items-center py-8 gap-5 text-black overflow-x-auto ">
 
         
       <div className="flex flex-col">
@@ -78,7 +78,7 @@ const Timetable = () => {
       </div>
 
 
-<Table>
+<Table className="table-auto border-separate border-spacing-0 rounded-lg overflow-hidden ">
   <TableHeader>
     <TableRow>
       <TableHead></TableHead>
@@ -86,7 +86,7 @@ const Timetable = () => {
         <TableHead
           key={index}
           colSpan={2}
-          className="text-left"
+          className="text-left text-[10px]"
         >
           {heading}
         </TableHead>
@@ -96,14 +96,14 @@ const Timetable = () => {
 
   <TableBody>
     <TableRow>
-      <TableHead className="text-left text-[10px] md:text-sm font-medium text-primary">
+      <TableHead className="text-left text-[10px] text-primary">
         Begins
       </TableHead>
       {beginsTimes.map((time, index) => (
         <TableCell
           key={index}
           colSpan={2}
-          className="py-2 text-left"
+          className="text-left text-[10px]"
         >
           {time}
         </TableCell>
@@ -111,14 +111,14 @@ const Timetable = () => {
     </TableRow>
 
     <TableRow>
-      <TableHead className="text-left text-[10px] md:text-sm font-medium text-primary">
+      <TableHead className="text-left text-[10px] text-primary">
         Jam'aat
       </TableHead>
       {jamaatTimes.map((time, index) => (
         <TableCell
           key={index}
           colSpan={2}
-          className="text-left"
+          className="text-left text-[10px]"
         >
           {time}
         </TableCell>
@@ -126,13 +126,13 @@ const Timetable = () => {
     </TableRow>
 
     {/* Other times */}
-    <TableRow className="bg-primary">
+    <TableRow className="">
       {otherTimes.map(([time, title], index) => (
         <React.Fragment key={index}>
-          <TableHead className="text-sm text-white font-semibold">
+          <TableHead className="text-[10px] text-white font-semibold bg-primary ">
             {title}:
           </TableHead>
-          <TableCell className="text-white">{time}</TableCell>
+          <TableCell className="text-white bg-[#244f39a9] text-[10px]">{time}</TableCell>
         </React.Fragment>
       ))}
     </TableRow>
