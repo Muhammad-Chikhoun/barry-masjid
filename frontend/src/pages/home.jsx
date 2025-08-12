@@ -4,14 +4,14 @@
 import * as React from "react";
 import Timetable from "../components/timetable2";
 import HomeCarousel from "../components/homeCarousel";
+import News from "@/components/news";
 
 const Home = () => {
     return (
         <div>
-          <div className="w-full h-full md:px-50 py-2 ">
             <Timetable />
-          </div>
-          <HomeCarousel />
+            <HomeCarousel />
+            <News />
         </div>
     )
 }
