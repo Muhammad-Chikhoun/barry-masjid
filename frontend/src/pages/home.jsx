@@ -11,7 +11,7 @@ const Home = () => {
         <div>
             <Timetable />
             <HomeCarousel />
-            <News />
+            {/*<News />*/}
         </div>
     )
 }
