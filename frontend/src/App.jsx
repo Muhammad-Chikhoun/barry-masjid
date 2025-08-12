@@ -6,7 +6,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 
 import Home from "./pages/home";
-import MainTable from "./components/mainTable";
+import Timetable from "./pages/timetable";
 import Dev from "./components/dev";
 import Live from "./pages/live";
 import Error from "./pages/error";
@@ -25,7 +25,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/timetable" element={<MainTable />} />
+          <Route path="/timetable" element={<Timetable />} />
           <Route path="/live" element={<Live />} />
           <Route path="/donate" element={<Dev />} />
           <Route path="/madrassah" element={<Dev />} />
