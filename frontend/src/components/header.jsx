@@ -5,23 +5,24 @@ import * as React from "react";
 import useDateTime from "../hooks/useDateTime";
 
 const Header = () => {
-    const { formattedGregorian, formattedHijri} = useDateTime();
+    const { formattedGregorian, formattedHijri, time} = useDateTime();
     
     return (
       <header className="bg-primary py-4">
-        <div className="flex items-center justify-between px-4">
+        <div className="grid grid-cols-3 items-center px-4">
           {/* Logo */}
-          <img src="barry.png" className="w-15 md:w-30" alt="Barry Logo" />
+          <img src="barry.png" className="w-13 md:w-30" alt="Barry Logo" />
   
           {/* Title */}
-          <h1 className="text-center text-white text-lg font-bold md:text-6xl mx-auto">
+          <h1 className=" text-white text-lg font-bold md:text-6xl">
             Barry Masjid
           </h1>
   
           {/* Date & Time */}
-          <div className="text-white text-xs md:text-sm text-right w-15 md:w-30 leading-tight">
-            <div className="text-[9px] md:text-xs">{formattedHijri}</div>
-            <div className="text-[9px] md:text-xs opacity-80">{formattedGregorian}</div>
+          <div className="text-white text-right">
+            <div className="text-[7.5px] md:text-xs">{formattedHijri}</div>
+            <div className="text-[7.5px] md:text-xs">{formattedGregorian}</div>
+            <div className="text-[7.5px] md:text-xs opacity-80">{time}</div>
           </div>
         </div>
       </header>
