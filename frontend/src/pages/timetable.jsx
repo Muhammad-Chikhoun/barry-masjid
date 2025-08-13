@@ -119,7 +119,7 @@ const Timetable = () => {
                       <TableCell
                         key={cellIndex}
                         style={
-                          headings[cellIndex + 1][2] && rowIndex + 1 !== parseInt(currentDate)
+                          headings[cellIndex + 1][2] && rowIndex + 1 !== parseInt(currentDate) || headings[cellIndex + 1][2] && currentMonth !== monthNum
                             ? { color: headings[cellIndex + 1][2] }
                             : undefined
                         }
