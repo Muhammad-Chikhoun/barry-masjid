@@ -7,6 +7,7 @@ import Footer from "./components/footer";
 
 import Home from "./pages/home";
 import Timetable from "./pages/timetable";
+import Contact from "./pages/contact";
 import Dev from "./components/dev";
 import Live from "./pages/live";
 import Error from "./pages/error";
@@ -29,7 +30,7 @@ function App() {
           <Route path="/live" element={<Live />} />
           <Route path="/donate" element={<Dev />} />
           <Route path="/madrassah" element={<Dev />} />
-          <Route path="/contact" element={<Dev />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/screen12345" element={<Dev />} />
           <Route path="*" element={<Error />} />
         </Routes>

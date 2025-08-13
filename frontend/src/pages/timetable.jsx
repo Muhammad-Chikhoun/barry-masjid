@@ -75,13 +75,13 @@ const Timetable = () => {
 
           <TableRow>
             <TableHead colSpan={1}></TableHead> {/* Date column */}
-            <TableHead colSpan={9} className="font-bold text-2xl text-primary text-center">Beginning Times</TableHead>
-            <TableHead colSpan={5} className="font-bold text-2xl text-primary text-center">Jamaat Times</TableHead>
+            <TableHead colSpan={9} className="font-bold md:text-2xl text-lg text-primary text-center">Beginning Times</TableHead>
+            <TableHead colSpan={5} className="font-bold md:text-2xl text-lg text-primary text-center">Jamaat Times</TableHead>
           </TableRow>
 
           <TableRow className="border-1 border-b-black">
             {headings.map((heading, index) => (
-              <TableHead key={index} className={`text-[10px] md:text-sm ${heading[1] ? "border-r-1 border-black" : ""}`}>{heading[0]}</TableHead>
+              <TableHead key={index} className={`text-[10px] md:text-sm text-center ${heading[1] ? "border-r-1 border-black" : ""}`}>{heading[0]}</TableHead>
             ))}
           </TableRow>
 

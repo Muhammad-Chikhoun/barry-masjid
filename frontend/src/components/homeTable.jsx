@@ -16,7 +16,7 @@ import { fullDay } from "@/hooks/useData";
 import useDateTime from "@/hooks/useDateTime";
 import { useNavigate } from "react-router-dom";
 
-const Timetable = () => {
+const HomeTable = () => {
   const { monthNum, dateOnly, monthName, time } = useDateTime();
   const [currentDate] = React.useState(dateOnly);
 
@@ -123,74 +123,74 @@ const Timetable = () => {
           </Table>
         </div>
 
-{/* MOBILE (transposed) */}
-<div className="block md:hidden">
-  <div className="flex flex-row gap-3">
-    {/* Table */}
-    <div className="flex-1">
-      <Table className="table-auto border-separate border-spacing-0 rounded-lg overflow-hidden w-full">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="text-left text-[13px]"></TableHead>
-            <TableHead className="text-center text-[13px]">Begins</TableHead>
-            <TableHead className="text-center text-[13px]">Jam&apos;aat</TableHead>
-          </TableRow>
-        </TableHeader>
+        {/* MOBILE (transposed) */}
+        <div className="block md:hidden">
+          <div className="flex flex-row gap-3">
+            {/* Table */}
+            <div className="flex-1">
+              <Table className="table-auto border-separate border-spacing-0 rounded-lg overflow-hidden w-full">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="text-left text-[13px]"></TableHead>
+                    <TableHead className="text-center text-[13px]">Begins</TableHead>
+                    <TableHead className="text-center text-[13px]">Jam&apos;aat</TableHead>
+                  </TableRow>
+                </TableHeader>
 
-        <TableBody>
-          {headings.map((label, i) => (
-            <TableRow key={label}>
-              <TableHead className="text-left text-[13px] text-primary">{label}</TableHead>
-              <TableCell
-                className={`text-center text-[13px] ${
-                  i === currentSalahIndex ? "bg-primary text-white rounded-l-md" : ""
-                }`}
-              >
-                {beginsTimes[i]}
-              </TableCell>
-              <TableCell
-                className={`text-center text-[13px] ${
-                  i === currentSalahIndex ? "bg-primary text-white rounded-r-md" : ""
-                }`}
-              >
-                {jamaatTimes[i]}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+                <TableBody>
+                  {headings.map((label, i) => (
+                    <TableRow key={label}>
+                      <TableHead className="text-left text-[13px] text-primary">{label}</TableHead>
+                      <TableCell
+                        className={`text-center text-[13px] ${
+                          i === currentSalahIndex ? "bg-primary text-white rounded-l-md" : ""
+                        }`}
+                      >
+                        {beginsTimes[i]}
+                      </TableCell>
+                      <TableCell
+                        className={`text-center text-[13px] ${
+                          i === currentSalahIndex ? "bg-primary text-white rounded-r-md" : ""
+                        }`}
+                      >
+                        {jamaatTimes[i]}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
 
-    {/* Other times cards */}
-    <div className="flex flex-col justify-start gap-2 w-[120px]">
-      {otherTimes.map(([val, label], i) => (
-        <div
-          key={`${label}-${i}`}
-          className="rounded-md bg-[#244f39a9] text-white text-[11px] px-2 py-1 flex flex-col items-center text-center"
-        >
-          <span className="opacity-90">{label}</span>
-          <span className="font-semibold">{val}</span>
+            {/* Other times cards */}
+            <div className="flex flex-col justify-start gap-2 w-[120px]">
+              {otherTimes.map(([val, label], i) => (
+                <div
+                  key={`${label}-${i}`}
+                  className="rounded-md bg-[#244f39a9] text-white text-[11px] px-2 py-1 flex flex-col items-center text-center"
+                >
+                  <span className="opacity-90">{label}</span>
+                  <span className="font-semibold">{val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</div>
 
 
-{/* OTHER TIMES — compact cards (desktop, same style as mobile) */}
-<div className="mt-4 hidden md:flex">
-  <div className="flex flex-row flex-wrap gap-2">
-    {otherTimes.map(([val, label], i) => (
-      <div
-        key={`${label}-${i}`}
-        className="rounded-md bg-[#244f39a9] text-white text-[11px] px-3 py-2 flex flex-col items-center text-center w-[140px]"
-      >
-        <span className="opacity-90">{label}</span>
-        <span className="font-semibold">{val}</span>
-      </div>
-    ))}
-  </div>
-</div>
+        {/* OTHER TIMES — compact cards (desktop, same style as mobile) */}
+        <div className="mt-4 hidden md:flex">
+          <div className="flex flex-row flex-wrap gap-2">
+            {otherTimes.map(([val, label], i) => (
+              <div
+                key={`${label}-${i}`}
+                className="rounded-md bg-[#244f39a9] text-white text-[11px] px-3 py-2 flex flex-col items-center text-center w-[140px]"
+              >
+                <span className="opacity-90">{label}</span>
+                <span className="font-semibold">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
 
         <br />
@@ -221,4 +221,4 @@ const Timetable = () => {
   );
 };
 
-export default Timetable;
+export default HomeTable;

@@ -2,14 +2,14 @@
 // home page of the website
 
 import * as React from "react";
-import Timetable from "../components/timetable2";
+import HomeTable from "../components/homeTable";
 import HomeCarousel from "../components/homeCarousel";
 import News from "@/components/news";
 
 const Home = () => {
     return (
         <div>
-            <Timetable />
+            <HomeTable />
             <HomeCarousel />
             {/*<News />*/}
         </div>

@@ -25,6 +25,16 @@ const useDateTime = () => {
   const weekday = dateTime.toLocaleDateString("en-GB", {weekday: "long",})
   const monthOnly = dateTime.toLocaleString("en-GB", {month: "long"});
 
+  const getOrdinalSuffix = (day) => {
+    if (day > 3 && day < 21) return "th"; // 4th-20th
+    switch (day % 10) {
+      case 1: return "st";
+      case 2: return "nd";
+      case 3: return "rd";
+      default: return "th";
+    }
+  };
+
   //variables for full Hijri date
   const todayHijri = new HijriDate();
   const hDate = todayHijri.getDate();
@@ -37,23 +47,26 @@ const useDateTime = () => {
   //exports
   const dateOnly = dateTime.toLocaleString("en-GB", {day: "2-digit"});
   const monthNum = months.indexOf(monthOnly);
-  const formattedHijri = `${hDay} ${hDate} ${monthName} ${year}`
+  const hSuffix = getOrdinalSuffix(hDate);
+  const formattedHijri = `${hDay} ${hDate}${hSuffix} ${monthName} ${year}`
 
-  const formattedGregorian = dateTime.toLocaleString("en-GB", {
+
+  const suffix = getOrdinalSuffix(dateOnly);
+  const formattedGregorian = `${dateTime.toLocaleString("en-GB", {
     weekday: "long",
-    day: "numeric",
+  })} ${dateOnly}${suffix} ${dateTime.toLocaleString("en-GB", {
     month: "long",
     year: "numeric",
-  });
+  })}`;
 
-  const time = dateTime.toLocaleDateString("en-GB", {
+  const time = dateTime.toLocaleTimeString("en-GB", {
     hour: "numeric",
     minute: "2-digit",
     second: "2-digit",
-    hour12: true,
-  })
+    hour12: true
+  });
 
-  return { dateOnly, monthNum, formattedGregorian, formattedHijri, time, months };
+  return { dateOnly, monthNum, formattedGregorian, formattedHijri, time, months, monthName };
 };
 
 export default useDateTime;
