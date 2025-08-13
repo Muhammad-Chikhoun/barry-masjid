@@ -74,13 +74,19 @@ const Contact = () => {
 
         {/* Map Card (unchanged, full width) */}
         <div className="w-full bg-white shadow-md rounded-lg p-3 md:p-5 mt-8">
-          <iframe
-            title="Google Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2488.6086996905133!2d-3.2530625!3d51.4102442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486e05b917763677%3A0x35601617263a0fef!2s332%20Holton%20Rd%2C%20Barry%20CF63%204HY!5e0!3m2!1sen!2suk!4v1755034580030!5m2!1sen!2suk"
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2488.6085527313753!2d-3.2529654!3d51.4102469!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486e05b917b20f43%3A0xa6e228e4f45d4b1b!2sBarry%20Masjid%20(Mosque)!5e0!3m2!1sen!2suk!4v1755117246832!5m2!1sen!2suk"
             className="w-full h-64 rounded-lg border border-gray-200"
             allowFullScreen=""
             loading="lazy"
           ></iframe>
+          <a
+            href="https://www.google.com/maps/place/Barry+Masjid+(Mosque),+332+Holton+Rd,+Barry+CF63+4HY/@51.4102469,-3.2529654,17z/data=!4m14!1m7!3m6!1s0x486e05b917763677:0x35601617263a0fef!2s332+Holton+Rd,+Barry+CF63+4HY!8m2!3d51.4102442!4d-3.2530625!16s%2Fg%2F11c26nc9p5!3m5!1s0x486e05b917b20f43:0xa6e228e4f45d4b1b!8m2!3d51.4102469!4d-3.2529654!16s%2Fg%2F11b6gq3zfk?hl=en&gl=GB&utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MDgxMV8wIOC7DCoASAJQAQ%3D%3D"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-primary hover:underline pt-2"
+          >
+            See reviews & photos on Google Maps →
+          </a>
         </div>
       </div>
     </div>
