@@ -18,14 +18,14 @@ import { useNavigate } from "react-router-dom";
 
 import { ArrowRight } from "lucide-react";
 
-const HomeTable = () => {
+const HomeTable = ({header = true}) => {
   const { monthNum, dateOnly, monthName, time } = useDateTime();
   const [currentDate] = React.useState(dateOnly);
 
   const navigate = useNavigate();
 
   const times = fullDay(monthNum, parseInt(currentDate));
-  const showThirdButton = false;
+  const showThirdButton = monthName === "Ramadan";
 
   const headings = ["Fajr", "Zuhr", "Asr", "Maghrib", "Isha"];
 
@@ -97,6 +97,7 @@ const currentSalahIndex = getCurrentSalahIndex();
   return (
     <div className="flex items-center justify-center ">
       <div className="items-center py-5 px-4 gap-5 text-black overflow-x-auto ">
+        {header &&
         <div className="flex flex-col pb-2">
           <div className="flex items-center justify-between">
             {/* Title */}
@@ -105,6 +106,7 @@ const currentSalahIndex = getCurrentSalahIndex();
             </h1>
 
             {/* Live badge */}
+            
             <button
               onClick={() => navigate("/live")}
               className="inline-flex items-center gap-2 text-xs md:text-sm px-3 py-1.5 rounded-full bg-green-100 text-green-700 hover:bg-green-200 transition"
@@ -113,10 +115,12 @@ const currentSalahIndex = getCurrentSalahIndex();
               Listen Live
               <ArrowRight className="w-4 h-4" />
             </button>
+            
           </div>
 
           <hr className="border-t-3 border-primary mt-1" />
         </div>
+        }
         {/* DESKTOP / TABLET (original) */}
         <div className="hidden md:block">
           <Table className="table-auto border-separate border-spacing-0 rounded-lg overflow-hidden">
@@ -256,7 +260,7 @@ const currentSalahIndex = getCurrentSalahIndex();
           </div>
         </div>
 
-
+        {header &&
         <div className="flex flex-row gap-1 pt-2">
           <Button
             className="w-full sm:w-auto flex-1 md:text-sm text-[10px] whitespace-normal text-center px-2 py-2"
@@ -279,6 +283,7 @@ const currentSalahIndex = getCurrentSalahIndex();
             </Button>
           )}
         </div>
+        }
       </div>
     </div>
   );
