@@ -58,68 +58,92 @@ const Timetable = () => {
 
 
   return (
-    <div className="overflow-x-auto text-black">
-      {/*Title and divider */}
-      <div className="max-w-5xl mx-auto px-4 py-5 pt-15">
-        <h1 className="font-bold text-xl text-primary md:text-4xl">Salah Timetable{" "}
-          <span className="text-sm text-gray-600 font-normal md:text-lg">for the month of {months[currentMonth]}</span>
+    <div className="text-black">
+      {/* Title + divider */}
+      <div className="max-w-5xl mx-auto px-4 py-5 pt-5">
+        <h1 className="font-bold text-xl text-primary md:text-4xl">
+          Salah Timetable{" "}
+          <span className="text-sm text-gray-600 font-normal md:text-lg">
+            for the month of {months[currentMonth]}
+          </span>
         </h1>
         <hr className="border-t-3 border-primary" />
       </div>
 
-      <Table className="w-fit mx-auto text-center">
+      {/* Scaled table */}
+      <div className="md:overflow-visible overflow-x-hidden">
+        <div className="flex justify-center">
+          {/* Zoom on small screens; normal from md+ */}
+          <div className="inline-block [zoom:0.44] md:[zoom:1]">
+            <Table className="text-center">
+              {/* Header + caption */}
+              <TableCaption>{months[currentMonth]} Prayer Times</TableCaption>
+              <TableHeader>
+                <TableRow>
+                  <TableHead colSpan={1}></TableHead>
+                  <TableHead colSpan={9} className="font-bold md:text-2xl text-lg text-primary text-center">
+                    Beginning Times
+                  </TableHead>
+                  <TableHead colSpan={5} className="font-bold md:text-2xl text-lg text-primary text-center">
+                    Jamaat Times
+                  </TableHead>
+                </TableRow>
 
-        {/*Header and caption*/}
-        <TableCaption>{months[currentMonth]} Prayer Times</TableCaption>
-        <TableHeader>
+                <TableRow className="border-1 border-b-black">
+                  {headings.map((heading, index) => (
+                    <TableHead
+                      key={index}
+                      className={`text-[10px] md:text-sm text-center ${heading[1] ? "border-r-1 border-black" : ""}`}
+                    >
+                      {heading[0]}
+                    </TableHead>
+                  ))}
+                </TableRow>
+              </TableHeader>
 
-          <TableRow>
-            <TableHead colSpan={1}></TableHead> {/* Date column */}
-            <TableHead colSpan={9} className="font-bold md:text-2xl text-lg text-primary text-center">Beginning Times</TableHead>
-            <TableHead colSpan={5} className="font-bold md:text-2xl text-lg text-primary text-center">Jamaat Times</TableHead>
-          </TableRow>
-
-          <TableRow className="border-1 border-b-black">
-            {headings.map((heading, index) => (
-              <TableHead key={index} className={`text-[10px] md:text-sm text-center ${heading[1] ? "border-r-1 border-black" : ""}`}>{heading[0]}</TableHead>
-            ))}
-          </TableRow>
-
-        </TableHeader>
-
-        <TableBody>
-
-          {/*Days loop*/}
-          {times.map((row, rowIndex) => (
-
-            <TableRow key={rowIndex} className={rowIndex + 1 === parseInt(currentDate) && currentMonth === monthNum ? "bg-primary text-white" : ""}>
-              {/*Date*/}
-              <TableCell className="text-[10px] md:text-xs border-r-1 border-black">{rowIndex + 1}</TableCell>
-                {/*Times loop*/}
-                {row.map((cell, cellIndex) => (
-                  <TableCell
-                    key={cellIndex}
-                    style={headings[cellIndex+1][2] && (rowIndex + 1 != parseInt(currentDate)) ? { color: headings[cellIndex+1][2] } : undefined}
-                    className={`text-[10px] md:text-xs leading-tight ${cellIndex === 8 ? "border-r-1 border-black" : ""}`}
+              <TableBody>
+                {times.map((row, rowIndex) => (
+                  <TableRow
+                    key={rowIndex}
+                    className={
+                      rowIndex + 1 === parseInt(currentDate) && currentMonth === monthNum ? "bg-primary text-white" : ""
+                    }
                   >
-                    {cell}
-                  </TableCell>
+                    {/* Date */}
+                    <TableCell className="text-[10px] md:text-xs border-r-1 border-black">
+                      {rowIndex + 1}
+                    </TableCell>
+
+                    {/* Times */}
+                    {row.map((cell, cellIndex) => (
+                      <TableCell
+                        key={cellIndex}
+                        style={
+                          headings[cellIndex + 1][2] && rowIndex + 1 !== parseInt(currentDate)
+                            ? { color: headings[cellIndex + 1][2] }
+                            : undefined
+                        }
+                        className={`text-[10px] md:text-xs leading-tight ${cellIndex === 8 ? "border-r-1 border-black" : ""}`}
+                      >
+                        {cell}
+                      </TableCell>
+                    ))}
+                  </TableRow>
                 ))}
-            </TableRow>
-          ))}
-
-        </TableBody>
-      </Table>
-
-      {/*Timetable month manager*/}
-      <div className="flex items-center justify-center gap-4 my-4">
-          <Button onClick={() => setCurrentMonth((prev) => Math.max(prev - 1, 0))}>Prev</Button>
-          <h1 className="font-semibold">{months[currentMonth]}</h1>
-          <Button onClick={() =>setCurrentMonth((prev) => Math.min(prev + 1, months.length - 1))}>Next {}</Button>
+              </TableBody>
+            </Table>
+            {/* Month manager */}
+            <div className="flex items-center justify-center gap-4 my-4">
+              <Button onClick={() => setCurrentMonth((prev) => Math.max(prev - 1, 0))}>Prev</Button>
+              <h1 className="font-semibold">{months[currentMonth]}</h1>
+              <Button onClick={() => setCurrentMonth((prev) => Math.min(prev + 1, months.length - 1))}>Next {}</Button>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
-
+    </div>
   );
+
 };
 
 export default Timetable;
