@@ -6,10 +6,12 @@ const Live = () => {
     <div className="min-h-[60vh] flex items-center justify-center px-4 py-10 text-black">
       <div className="w-full max-w-3xl">
         {/* Header */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between">
           <h1 className="text-2xl md:text-3xl font-bold text-primary">
             Live Stream
           </h1>
+          
+          
           {/* 
           <span className="inline-flex items-center gap-2 text-xs md:text-sm px-2.5 py-1 rounded-full bg-green-100 text-green-700">
             <span className="inline-block h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -17,11 +19,12 @@ const Live = () => {
           </span>
           */}
         </div>
-        
+        <hr className="border-t-3 border-primary" />
 
-        <p className="text-sm md:text-base text-gray-600 mb-4">
+        <p className="text-sm md:text-base text-gray-600 mb-4 pt-3">
           Listen to the Barry Masjid live audio stream. If the stream is offline, check back around prayer times.
         </p>
+        
 
         {/* Card */}
         <div className="rounded-xl shadow-md bg-white overflow-hidden">
