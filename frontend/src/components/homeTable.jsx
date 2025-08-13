@@ -105,13 +105,14 @@ const currentSalahIndex = getCurrentSalahIndex();
             </h1>
 
             {/* Live badge */}
-            <a
-              href="/live"
+            <button
+              onClick={() => navigate("/live")}
               className="inline-flex items-center gap-2 text-xs md:text-sm px-3 py-1.5 rounded-full bg-green-100 text-green-700 hover:bg-green-200 transition"
             >
               <span className="inline-block h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-              Listen Live < ArrowRight />
-            </a>
+              Listen Live
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
 
           <hr className="border-t-3 border-primary mt-1" />
