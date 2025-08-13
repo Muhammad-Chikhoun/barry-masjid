@@ -43,7 +43,7 @@ const Live = () => {
               Having issues? Try opening in a new tab.
             </span>
             <a
-              href="https://mymasjid.uk/miniplayer/barrymasjidislamiccentre"
+              href="https://mymasjid.uk/live/barrymasjidislamiccentre"
               target="_blank"
               rel="noreferrer"
               className="text-xs md:text-sm font-medium text-primary hover:underline"

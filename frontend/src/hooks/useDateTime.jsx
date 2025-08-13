@@ -64,7 +64,7 @@ const useDateTime = () => {
     minute: "2-digit",
     second: "2-digit",
     hour12: true
-  });
+  }).replace(/am|pm/, match => match.toUpperCase());
 
   return { dateOnly, monthNum, formattedGregorian, formattedHijri, time, months, monthName };
 };
