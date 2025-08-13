@@ -67,6 +67,7 @@ const HomeCarousel = () => {
                         </div>
                     </CarouselItem>
                     ))}
+                    {/*
                     <CarouselItem>
                         <div className="relative h-70 md:h-100 w-full text-white">
                         <img src={rawdata.rawdata.announcements[0].image} className="h-full w-full object-cover object-[50%_20%]"/>
@@ -82,6 +83,7 @@ const HomeCarousel = () => {
                         </div>
                         </div>
                     </CarouselItem>
+                    */}
                     </CarouselContent>
                 <CarouselPrevious/>
                 <CarouselNext />
