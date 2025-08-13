@@ -79,14 +79,6 @@ const Contact = () => {
             allowFullScreen=""
             loading="lazy"
           ></iframe>
-          <a
-            href="https://www.google.com/maps/place/Barry+Masjid+(Mosque),+332+Holton+Rd,+Barry+CF63+4HY/@51.4102469,-3.2529654,17z/data=!4m14!1m7!3m6!1s0x486e05b917763677:0x35601617263a0fef!2s332+Holton+Rd,+Barry+CF63+4HY!8m2!3d51.4102442!4d-3.2530625!16s%2Fg%2F11c26nc9p5!3m5!1s0x486e05b917b20f43:0xa6e228e4f45d4b1b!8m2!3d51.4102469!4d-3.2529654!16s%2Fg%2F11b6gq3zfk?hl=en&gl=GB&utm_campaign=ml-ardl&g_ep=Eg1tbF8yMDI1MDgxMV8wIOC7DCoASAJQAQ%3D%3D"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:underline pt-2"
-          >
-            See reviews & photos on Google Maps →
-          </a>
         </div>
       </div>
     </div>
