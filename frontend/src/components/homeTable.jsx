@@ -16,6 +16,8 @@ import { fullDay } from "@/hooks/useData";
 import useDateTime from "@/hooks/useDateTime";
 import { useNavigate } from "react-router-dom";
 
+import { ArrowRight } from "lucide-react";
+
 const HomeTable = () => {
   const { monthNum, dateOnly, monthName, time } = useDateTime();
   const [currentDate] = React.useState(dateOnly);
@@ -108,7 +110,7 @@ const currentSalahIndex = getCurrentSalahIndex();
               className="inline-flex items-center gap-2 text-xs md:text-sm px-3 py-1.5 rounded-full bg-green-100 text-green-700 hover:bg-green-200 transition"
             >
               <span className="inline-block h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-              Live
+              Listen Live < ArrowRight />
             </a>
           </div>
 
