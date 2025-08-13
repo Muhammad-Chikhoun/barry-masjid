@@ -212,7 +212,16 @@ const currentSalahIndex = getCurrentSalahIndex();
               {otherTimes.map(([val, label], i) => (
                 <div
                   key={`${label}-${i}`}
-                  className="rounded-md bg-[#244f39a9] text-white text-[11px] px-2 py-1 flex flex-col items-center text-center"
+                  className={`${(() => {
+                    switch (i) {
+                      case 0:
+                        return "bg-[#451d01]";
+                      case 4:
+                        return "bg-[#3d8644]";
+                      default:
+                        return "bg-[#8c0409]";
+                    }
+                  })()} rounded-md text-white text-[11px] px-2 py-1 flex flex-col items-center text-center`}
                 >
                   <span className="opacity-90">{label}</span>
                   <span className="font-semibold">{val}</span>
@@ -229,7 +238,16 @@ const currentSalahIndex = getCurrentSalahIndex();
             {otherTimes.map(([val, label], i) => (
               <div
                 key={`${label}-${i}`}
-                className="rounded-md bg-[#244f39a9] text-white text-[11px] px-3 py-2 flex flex-col items-center text-center w-[140px]"
+                className={`${(() => {
+                  switch (i) {
+                    case 0:
+                      return "bg-[#451d01]";
+                    case 4:
+                      return "bg-[#3d8644]";
+                    default:
+                      return "bg-[#8c0409]";
+                  }
+                })()} rounded-md text-white text-[11px] px-3 py-2 flex flex-col items-center text-center w-[140px]`}
               >
                 <span className="opacity-90">{label}</span>
                 <span className="font-semibold">{val}</span>
