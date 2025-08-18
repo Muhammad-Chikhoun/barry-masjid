@@ -52,11 +52,12 @@ const Contact = () => {
                 <Phone className="text-primary w-6 h-6" />
                 <span className="text-sm md:text-base">01446 745822</span>
               </div>
-
+{/* 
               <div className="flex items-start gap-4">
                 <Mail className="text-primary w-6 h-6 mt-0.5" />
                 <span className="text-sm md:text-base">info@barrymasjid.org</span>
               </div>
+*/}
 
               <div className="flex items-start gap-4">
                 <MapPin className="text-primary w-6 h-6 mt-0.5" />

@@ -22,7 +22,7 @@ const Header = () => {
           <div className="text-white text-right">
             <div className="text-[7.5px] md:text-xs">{formattedHijri}</div>
             <div className="text-[7.5px] md:text-xs">{formattedGregorian}</div>
-            <div className="text-[7.5px] md:text-sm">{time}</div>
+            <div className="text-[7.5px] md:text-sm font-bold">{time}</div>
           </div>
         </div>
       </header>

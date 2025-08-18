@@ -227,8 +227,8 @@ const currentSalahIndex = getCurrentSalahIndex();
                     }
                   })()} rounded-md text-white text-[11px] px-2 py-1 flex flex-col items-center text-center`}
                 >
-                  <span className="opacity-90">{label}</span>
-                  <span className="font-semibold">{val}</span>
+                  <span className="opacity-90 font-bold">{label}</span>
+                  <span className="font-bold">{val}</span>
                 </div>
               ))}
             </div>
@@ -253,8 +253,8 @@ const currentSalahIndex = getCurrentSalahIndex();
                   }
                 })()} rounded-md text-white text-[11px] px-3 py-2 flex flex-col items-center text-center w-[140px]`}
               >
-                <span className="opacity-90">{label}</span>
-                <span className="font-semibold">{val}</span>
+                <span className="opacity-90 font-bold">{label}</span>
+                <span className="font-bold">{val}</span>
               </div>
             ))}
           </div>
