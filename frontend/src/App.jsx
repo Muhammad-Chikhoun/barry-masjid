@@ -12,6 +12,7 @@ import Dev from "./components/dev";
 import Live from "./pages/live";
 import Error from "./pages/error";
 import Screen from "./pages/screen";
+import Donation from "./pages/donation";
 
 function App() {
   const location = useLocation();
@@ -29,7 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/timetable" element={<Timetable />} />
           <Route path="/live" element={<Live />} />
-          <Route path="/donate" element={<Dev />} />
+          <Route path="/donate" element={<Donation />} />
           <Route path="/madrassah" element={<Dev />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/screen12345" element={<Screen />} />

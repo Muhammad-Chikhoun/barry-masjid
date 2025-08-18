@@ -23,9 +23,10 @@ const Timetable = () => {
   const {dateOnly} = useDateTime();
 
   const cantPray = "#8c0409"
+  const suhoorEnd = "#451d01"
   const headings = [
     ["Date", 1],
-    ["Suhoor\nEnd", 0, "#451d01"],
+    ["Suhoor\nEnd", 0, suhoorEnd],
     ["Fajr", 0],
     ["Sunrise", 0, cantPray],
     ["Zawaal", 0, cantPray],
@@ -46,6 +47,11 @@ const Timetable = () => {
   const [currentMonth, setCurrentMonth] = React.useState(monthNum);
   const [currentDate] =  React.useState(dateOnly);
 
+  const items = [
+    { color: suhoorEnd, label: "Stop eating before Suhoor end when fasting" },
+    { color: cantPray, label: "No Salah should be performed at these times " }
+  ];
+
   //retrieves a 2D array of all the times for the month
   const times = React.useMemo(() => {
     const monthTimes = [];
@@ -59,6 +65,7 @@ const Timetable = () => {
 
   return (
     <div className="text-black">
+
       {/* Title + divider */}
       <div className="max-w-5xl mx-auto px-4 py-5 pt-5">
         <h1 className="font-bold text-xl text-primary md:text-4xl">
@@ -75,6 +82,16 @@ const Timetable = () => {
         <div className="flex justify-center">
           {/* Zoom on small screens; normal from md+ */}
           <div className="inline-block [zoom:0.44] md:[zoom:1]">
+            
+            <div className="flex gap-4 justify-center py-4">
+              {items.map((item, i) => (
+                <div key={i} className="flex items-center gap-1">
+                  <span className={`w-4 h-4 rounded bg-[${item.color}]`} />
+                  <span className="text-sm text-gray-700">{item.label}</span>
+                </div>
+              ))}
+            </div>
+
             <Table className="text-center">
               {/* Header + caption */}
               <TableCaption>{months[currentMonth]} Prayer Times</TableCaption>
