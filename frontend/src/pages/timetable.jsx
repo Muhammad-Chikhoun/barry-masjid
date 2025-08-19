@@ -24,22 +24,24 @@ const Timetable = () => {
 
   const cantPray = "#8c0409"
   const suhoorEnd = "#451d01"
+  const jamaatColour = "#1f0dbd"
+  const beginColour = "#157007"
   const headings = [
     ["Date", 1],
     ["Suhoor\nEnd", 0, suhoorEnd],
-    ["Fajr", 0],
+    ["Fajr", 0, beginColour],
     ["Sunrise", 0, cantPray],
     ["Zawaal", 0, cantPray],
-    ["Zuhr", 0],
-    ["Asr", 0],
+    ["Zuhr", 0, beginColour],
+    ["Asr", 0, beginColour],
     ["Sunset", 0, cantPray],
-    ["Maghrib", 0],
-    ["Isha", 1],
-    ["Fajr", 0],
-    ["Zuhr", 0],
-    ["Asr", 0],
-    ["Maghrib", 0],
-    ["Isha", 0],
+    ["Maghrib", 0, beginColour],
+    ["Isha", 1, beginColour],
+    ["Fajr", 0, jamaatColour],
+    ["Zuhr", 0, jamaatColour],
+    ["Asr", 0, jamaatColour],
+    ["Maghrib", 0, jamaatColour],
+    ["Isha", 0, jamaatColour],
   ];
 
   //useState that manages the changing months to see different monthly calenders
@@ -49,7 +51,8 @@ const Timetable = () => {
 
   const items = [
     { color: suhoorEnd, label: "Stop eating before Suhoor end when fasting" },
-    { color: cantPray, label: "No Salah should be performed at these times " }
+    { color: cantPray, label: "No Salah should be performed at these times" },
+    { color: beginColour, label: "Mandatory Salah to be perfomed daily" }
   ];
 
   //retrieves a 2D array of all the times for the month
@@ -87,7 +90,7 @@ const Timetable = () => {
               {items.map((item, i) => (
                 <div key={i} className="flex items-center gap-1">
                   <span className={`w-4 h-4 rounded bg-[${item.color}]`} />
-                  <span className="text-sm text-gray-700">{item.label}</span>
+                  <span className="text-sm">{item.label}</span>
                 </div>
               ))}
             </div>
