@@ -86,14 +86,14 @@ const Timetable = () => {
           {/* Zoom on small screens; normal from md+ */}
           <div className="inline-block [zoom:0.44] md:[zoom:1]">
             
-            <div className="flex gap-4 justify-center py-4">
-              {items.map((item, i) => (
-                <div key={i} className="flex items-center gap-1">
-                  <span className={`w-4 h-4 rounded bg-[${item.color}]`} />
-                  <span className="text-sm">{item.label}</span>
-                </div>
-              ))}
-            </div>
+          <div className="flex gap-4 justify-center py-4">
+            {items.map((item, i) => (
+              <div key={i} className="flex items-center gap-1">
+                <span className="w-4 h-4 rounded" style={{ backgroundColor: item.color }} />
+                <span className="text-sm">{item.label}</span>
+              </div>
+            ))}
+          </div>
 
             <Table className="text-center">
               {/* Header + caption */}
