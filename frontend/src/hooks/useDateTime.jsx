@@ -45,7 +45,7 @@ const useDateTime = () => {
 
 
   //exports
-  const dateOnly = dateTime.toLocaleString("en-GB", {day: "2-digit"});
+  const dateOnly = dateTime.toLocaleString("en-GB", {day: "numeric"});
   const monthNum = months.indexOf(monthOnly);
   const hSuffix = getOrdinalSuffix(hDate);
   const formattedHijri = `${hDay} ${hDate}${hSuffix} ${monthName} ${year}`

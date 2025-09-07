@@ -51,8 +51,8 @@ const Timetable = () => {
 
   const items = [
     { color: suhoorEnd, label: "Stop eating before Suhoor end when fasting" },
-    { color: cantPray, label: "No Salah should be performed at these times" },
-    { color: beginColour, label: "Mandatory Salah to be perfomed daily" }
+    { color: beginColour, label: "Mandatory Salah to be perfomed daily" },
+    { color: cantPray, label: "No Salah should be performed at these times" }
   ];
 
   //retrieves a 2D array of all the times for the month
