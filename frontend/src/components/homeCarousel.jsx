@@ -15,8 +15,11 @@ import {
 
 import carouselItems from "../assets/courasel.json";
 import rawdata from "../assets/data.json";
+import { useNavigate } from "react-router-dom";
 
 const HomeCarousel = () => {
+    const navigate = useNavigate();
+
     return (
         <>
             <Carousel>
@@ -44,7 +47,7 @@ const HomeCarousel = () => {
                      */}
                     
                     {carouselItems.map((item, index) => (
-                    <CarouselItem key={index}>
+                    <CarouselItem key={index} onClick={() => navigate(item.link)}>
                         <div className="relative h-70 md:h-100 w-full text-white">
                         <img
                             src={item.image}
@@ -64,6 +67,7 @@ const HomeCarousel = () => {
                         </div>
                     </CarouselItem>
                     ))}
+                    {/*
                     <CarouselItem>
                         <div className="relative h-70 md:h-100 w-full text-white">
                         <img src={rawdata.rawdata.announcements[0].image} className="h-full w-full object-cover object-[50%_20%]"/>
@@ -79,6 +83,7 @@ const HomeCarousel = () => {
                         </div>
                         </div>
                     </CarouselItem>
+                    */}
                     </CarouselContent>
                 <CarouselPrevious/>
                 <CarouselNext />

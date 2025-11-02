@@ -18,9 +18,11 @@
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
     "hijri-date": "^0.2.2",
+    "jspdf": "^3.0.1",
     "lucide-react": "^0.477.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.8.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.11",
     "tailwindcss-animate": "^1.0.7"

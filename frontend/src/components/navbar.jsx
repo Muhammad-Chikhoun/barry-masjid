@@ -1,86 +1,69 @@
 // navbar.jsx
-// navbar for the Barry Masjid & Islamic Centre website
-// Contains navigation links and tab content
-// Uses lucide-react icons for mobile menu toggle
-
-// TO DO: Add actual content for each tab as needed
-
 import * as React from "react";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
-import Home from "../pages/home";
-import MainTable from "./mainTable";
-import Dev from "./dev"
+const links = [
+  { name: "Home", path: "/" },
+  { name: "Timetable", path: "/timetable" },
+  { name: "Live", path: "/live" },
+  { name: "Donate", path: "/donate" },
+  { name: "Madrassah", path: "/madrassah" },
+  { name: "Contact", path: "/contact" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Home");
 
-  const navLinks = [
-    { name: "Home" },
-    { name: "Timetable" },
-    { name: "Live" },
-    { name: "Donate" },
-    { name: "Madrassah" },
-    { name: "Contact" },
-  ];
+  const base =
+    "px-5 py-2 transition-all rounded-md";
+  const active = "bg-white text-primary font-bold";
+  const idle = "text-white hover:bg-white hover:text-primary";
 
   return (
     <>
       <nav className="bg-primary shadow-xl w-full">
         <div>
-
-          {/* Mobile menu toggle */}
+          {/* Mobile toggle */}
           <div className="md:hidden">
-            <button className="flex flex-row mx-auto" onClick={() => setIsOpen(!isOpen)}>
+            <button className="flex flex-row mx-auto" onClick={() => setIsOpen(v => !v)}>
               {isOpen ? <X /> : <Menu />}
             </button>
           </div>
 
-          {/* Desktop menu */}
-          <div className="hidden md:flex space-x-10 text-md py-3 justify-center">
-            {navLinks.map(({ name }) => (
-              <button
+          {/* Desktop */}
+          <div className="hidden md:flex space-x-4 text-md py-3 justify-center">
+            {links.map(({ name, path }) => (
+              <NavLink
                 key={name}
-                onClick={() => setActiveTab(name)}
-                className={`hover:text-primary hover:bg-white hover:px-2.5 transition-all ${
-                  activeTab === name ? "text-primary bg-white px-5 font-bold" : "text-white"
-                }`}
+                to={path}
+                className={({ isActive }) => `${base} ${isActive ? active : idle}`}
               >
                 {name}
-              </button>
+              </NavLink>
             ))}
           </div>
         </div>
 
         {/* Mobile dropdown */}
         {isOpen && (
-          <div className="md:hidden mt-2 space-y-2 text-center">
-            {navLinks.map(({ name }) => (
-              <button
+          <div className="md:hidden mt-2 space-y-2 text-center pb-3">
+            {links.map(({ name, path }) => (
+              <NavLink
                 key={name}
-                onClick={() => {setActiveTab(name)}}
-                className={`block w-full hover:text-accent-foreground transition-all ${
-                  activeTab === name ? "text-primary bg-white" : "text-white"
-                }`}
+                to={path}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block w-full ${base} ${isActive ? active : idle}`
+                }
               >
                 {name}
-              </button>
+              </NavLink>
             ))}
           </div>
         )}
       </nav>
-
-      {/* Tab content */}
-      <div>
-        {activeTab === "Home" && <Home />}
-        {activeTab === "Timetable" && <MainTable />}
-        {activeTab === "Live" && <Dev />}
-        {activeTab === "Donate" && <Dev />}
-        {activeTab === "Madrassah" && <Dev />}
-        {activeTab === "Contact" && <Dev />}
-      </div>
     </>
   );
 };

@@ -1,3 +1,4 @@
+// useData.jsx
 // All raw data localized for faster, smoother access
 // Access functions using: import { functionName } from "../hooks/useData.jsx"
 
@@ -21,7 +22,7 @@ export function address() {
   return data.rawdata.association;
 }
 
-// Returns array of services and their availability
+// Returns array of services and their availability from mawaqit
 export function services() {
   return [
     ["Women Space", data.rawdata.womenSpace],
@@ -68,6 +69,7 @@ export function zawal(month, day) {
   return convertTo12Hour(`${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`);
 }
 
+// Sunset is 3 minutes before maghrib beginning time, returns sunset time
 export function sunset(month, day) {
   const timeStr = data.rawdata.calendar[month][String(day)][4]; // Maghrib time
   if (!timeStr) return null;
@@ -116,6 +118,7 @@ export function fullDay(month, day) {
   return full;
 }
 
+// retuns a full list of beginning times for a given day
 export function fullBegin(month, day){
   const full = [];
   for (let i = 0; i < 6; i++) {
@@ -127,6 +130,7 @@ export function fullBegin(month, day){
   return full;
 }
 
+// retuns a full list of jamaat times for a given day
 export function fullJamat(month, day){
   const full = [];
   for (let i = 0; i < 5; i++) {
@@ -147,6 +151,7 @@ export function iqamaCalendar(month) {
   return data.rawdata.iqamaCalendar[month];
 }
 
+// Returns the length of a given month, how many days, useful to avoid leap year issues and 30 vs 31 vs 28 on the timetable
 export function getMonthLength(month) {
   const days = data.rawdata.calendar[month];
   const length = Object.keys(days).length;
