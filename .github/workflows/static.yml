@@ -27,25 +27,34 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+
       - name: Set up Node
         uses: actions/setup-node@v5
         with:
           node-version: lts/*
           cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json  # 👈 points to correct place
+
       - name: Install dependencies
-        run: npm install
+        working-directory: ./frontend   # 👈 run npm inside frontend/
+        run: npm install                # or npm ci if you have a lock file
+
       - name: Build
+        working-directory: ./frontend   # 👈 same here
         run: npm run build
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          # Upload dist folder
-          path: './dist'
+          path: './frontend/dist'       # 👈 point to built files
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
