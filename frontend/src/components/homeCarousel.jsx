@@ -13,9 +13,32 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-import carouselItems from "../assets/courasel.json";
 import rawdata from "../assets/data.json";
 import { useNavigate } from "react-router-dom";
+import live from '@/assets/live.png';
+import classes from '@/assets/classes.jpeg';
+import money from '@/assets/money-.jpg';
+
+const  cards = [
+  {
+    "image": live,
+    "title": "Listen Live",
+    "description": "Click to hear live athan from Barry Masjid.",
+    "link":"/live"
+  },
+  {
+    "image": classes,
+    "title": "Qur'an Classes",
+    "description": "Find out more about our Qur'an classes and how to register.",
+    "link":"/madrassah"
+  },
+  {
+    "image": money,
+    "title": "Support the Masjid",
+    "description": "Help us maintain and grow by making a donation today.",
+    "link":"/donate"
+  }
+]
 
 const HomeCarousel = () => {
     const navigate = useNavigate();
@@ -46,7 +69,7 @@ const HomeCarousel = () => {
                     </CarouselItem>
                      */}
                     
-                    {carouselItems.map((item, index) => (
+                    {cards.map((item, index) => (
                     <CarouselItem key={index} onClick={() => navigate(item.link)}>
                         <div className="relative h-70 md:h-100 w-full text-white">
                         <img
